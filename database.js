@@ -18,3 +18,4 @@ let meatArray = ["Pork Chops", "Ground Beef", "Chicken Breasts", "Chicken Thighs
 "Salmon Fillets", "Shrimp", "Ground Turkey", "Turkey Slices", "Ham Slices"];
 let grainArray = ["White Rice", "Brown Rice", "White Bread", "Whole Grain Bread", 
 "Lentils", "Black Beans", "Kidney Beans", "Basmati Rice", "Corn Tortillas", "Flour Tortillas"];
+let fishArray = ["Salmon Fillets", "Shrimp"];
