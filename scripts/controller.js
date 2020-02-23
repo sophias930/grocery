@@ -90,10 +90,10 @@ function questionsDone() {
     entirePage.append('<h2>Here is a recommended grocery plan catered to you!</h2>');
 
     if (size == "small") {
-        fruits = 4;
-        vegetables = 6;
-        meat = 4;
-        grains = 6;
+        fruits = 2;
+        vegetables = 4;
+        meat = 2;
+        grains = 2;
         totalCost = "$50"
     } else if (size == "medium") {
         fruits = 8;
@@ -143,6 +143,6 @@ function questionsDone() {
         entirePage.append(groceryList[i]+'<br>');
     }
 
-    entirePage.append("<br>Your total cost will come out to about: " + totalCost);
+    entirePage.append("<br>Your total cost will come out to about " + totalCost);
 
 }

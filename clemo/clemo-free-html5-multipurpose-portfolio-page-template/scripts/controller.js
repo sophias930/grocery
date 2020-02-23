@@ -90,22 +90,22 @@ function questionsDone() {
     entirePage.append('<h3>Here is a recommended grocery plan catered to you!</h3>');
 
     if (size == "small") {
-        fruits = 4;
-        vegetables = 6;
-        meat = 4;
-        grains = 6;
+        fruits = 2;
+        vegetables = 3;
+        meat = 2;
+        grains = 3;
         totalCost = "$50"
     } else if (size == "medium") {
-        fruits = 8;
-        vegetables = 10;
-        meat = 8;
-        grains = 10;
+        fruits = 4;
+        vegetables = 5;
+        meat = 3;
+        grains = 4;
         totalCost = "$75"
     } else {
-        fruits = 12;
-        vegetables = 15;
-        meat = 12;
-        grains = 15;
+        fruits = 5;
+        vegetables = 6;
+        meat = 5;
+        grains = 5;
         totalCost = "$100"
     }
 
@@ -143,8 +143,9 @@ function questionsDone() {
         entirePage.append(groceryList[i]+'<br>');
     }
 
-    entirePage.append("<br><b>Your total cost will come out to about: " + totalCost+"</b>");
-    entirePage.append('<br><button type="button">Order Now!</button>')
+    entirePage.append("<br><b>Your total cost will come out to about " + totalCost+"</b>");
+    entirePage.append('<br><button type="button">Edit Order</button>')
+    entirePage.append('<button type="button">Order Now!</button>')
     $('#amazon').show();
 
 
