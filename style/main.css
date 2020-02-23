@@ -26,3 +26,7 @@ p {
 .question {
     text-align: center;
 }
+
+#answers {
+    text-align: center;
+}
