@@ -21,7 +21,7 @@ $(document).ready(() => {
 
     for (let i = 1; i < firstQuestion.length; i++) {
         formContainer.append('<input type="checkbox" id="answer'+i+'" name="answer'+i+'" value="'+firstQuestion[i]+'">');
-        formContainer.append('<label for="answer'+i+'">' + firstQuestion[i] + '</label><br>');
+        formContainer.append('<label for="answer'+i+'"> '  + firstQuestion[i] + '</label><br>');
     }
 
     formContainer.append('<button onclick=submitted() type="button">Submit</button>');
@@ -77,7 +77,7 @@ function nextQuestion() {
         formContainer.empty();
         for (let i = 1; i < currentQuestion.length; i++) {
             formContainer.append('<input type="checkbox" id="answer'+i+'" name="answer'+i+'" value="'+currentQuestion[i]+'">')
-            formContainer.append('<label for="answer'+i+'">' + currentQuestion[i] + '</label><br>')
+            formContainer.append('<label for="answer'+i+'"> ' + currentQuestion[i] + '</label><br>')
         }
         formContainer.append('<button onclick=submitted() type="button">Submit</button>');
     }
@@ -85,9 +85,9 @@ function nextQuestion() {
 
 function questionsDone() {
     console.log("You've answered all questions");
-    let entirePage = $('#entirepage');
+    let entirePage = $('.single_service');
     entirePage.empty();
-    entirePage.append('<h2>Here is a recommended grocery plan catered to you!</h2>');
+    entirePage.append('<h3>Here is a recommended grocery plan catered to you!</h3>');
 
     if (size == "small") {
         fruits = 4;
@@ -109,13 +109,13 @@ function questionsDone() {
         totalCost = "$100"
     }
 
-    if (aversions.contains("Vegetarian/Vegan")) {
+    if (aversions.includes("Vegetarian/Vegan")) {
         meatArray = vegetablesArray;
     }
-    if (aversions.contains("Pescatarian")) {
+    if (aversions.includes("Pescatarian")) {
         meatArray = fishArray;
     }
-    if (aversions.contains("Fruit")) {
+    if (aversions.includes("Fruit")) {
         fruitsArray = vegetablesArray;
     }
 
@@ -143,6 +143,9 @@ function questionsDone() {
         entirePage.append(groceryList[i]+'<br>');
     }
 
-    entirePage.append("<br>Your total cost will come out to about: " + totalCost);
+    entirePage.append("<br><b>Your total cost will come out to about: " + totalCost+"</b>");
+    entirePage.append('<br><button type="button">Order Now!</button>')
+    $('#amazon').show();
+
 
 }
