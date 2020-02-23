@@ -8,7 +8,7 @@ let vegetables = 0;
 let grains = 0;
 let meat = 0;
 let totalCost = 0;
-let groceryList = [];
+let groceryList = new Map();
 
 let formContainer = "";
 
@@ -21,7 +21,7 @@ $(document).ready(() => {
 
     for (let i = 1; i < firstQuestion.length; i++) {
         formContainer.append('<input type="checkbox" id="answer'+i+'" name="answer'+i+'" value="'+firstQuestion[i]+'">');
-        formContainer.append('<label for="answer'+i+'">' + firstQuestion[i] + '</label><br>');
+        formContainer.append('<label for="answer'+i+'"> '  + firstQuestion[i] + '</label><br>');
     }
 
     formContainer.append('<button onclick=submitted() type="button">Submit</button>');
@@ -77,7 +77,7 @@ function nextQuestion() {
         formContainer.empty();
         for (let i = 1; i < currentQuestion.length; i++) {
             formContainer.append('<input type="checkbox" id="answer'+i+'" name="answer'+i+'" value="'+currentQuestion[i]+'">')
-            formContainer.append('<label for="answer'+i+'">' + currentQuestion[i] + '</label><br>')
+            formContainer.append('<label for="answer'+i+'"> ' + currentQuestion[i] + '</label><br>')
         }
         formContainer.append('<button onclick=submitted() type="button">Submit</button>');
     }
@@ -85,27 +85,27 @@ function nextQuestion() {
 
 function questionsDone() {
     console.log("You've answered all questions");
-    let entirePage = $('#entirepage');
+    let entirePage = $('.single_service');
     entirePage.empty();
-    entirePage.append('<h2>Here is a recommended grocery plan catered to you!</h2>');
+    entirePage.append('<h3>Here is a recommended grocery plan catered to you!</h3>');
 
     if (size == "small") {
         fruits = 2;
-        vegetables = 4;
+        vegetables = 3;
         meat = 2;
-        grains = 2;
+        grains = 3;
         totalCost = "$50"
     } else if (size == "medium") {
-        fruits = 8;
-        vegetables = 10;
-        meat = 8;
-        grains = 10;
+        fruits = 4;
+        vegetables = 5;
+        meat = 3;
+        grains = 4;
         totalCost = "$75"
     } else {
-        fruits = 12;
-        vegetables = 15;
-        meat = 12;
-        grains = 15;
+        fruits = 5;
+        vegetables = 6;
+        meat = 5;
+        grains = 5;
         totalCost = "$100"
     }
 
@@ -121,28 +121,64 @@ function questionsDone() {
 
     for (let i = fruits; i > 0; i--) {
         let fruit = fruitsArray[Math.floor(Math.random() * fruitsArray.length)];
-        groceryList.push(fruit);
+        if (groceryList.has(fruit)) {
+            groceryList.set(fruit, groceryList.get(fruit) + 1);
+        } else {
+            groceryList.set(fruit, 1);
+        }
     }
 
     for (let i = vegetables; i > 0; i--) {
         let veg = vegetablesArray[Math.floor(Math.random() * vegetablesArray.length)];
-        groceryList.push(veg);
+        if (groceryList.has(veg)) {
+            groceryList.set(veg, groceryList.get(veg) + 1);
+        } else {
+            groceryList.set(veg, 1);
+        }
     }
 
     for (let i = meat; i > 0; i--) {
         let met = meatArray[Math.floor(Math.random() * meatArray.length)];
-        groceryList.push(met);
+        if (groceryList.has(met)) {
+            groceryList.set(met, groceryList.get(met) + 1);
+        } else {
+            groceryList.set(met, 1);
+        }    
     }
 
     for (let i = grains; i > 0; i--) {
         let grain = grainArray[Math.floor(Math.random() * grainArray.length)];
-        groceryList.push(grain);
+        if (groceryList.has(grain)) {
+            groceryList.set(grain, groceryList.get(grain) + 1);
+        } else {
+            groceryList.set(grain, 1);
+        }    
     }
 
-    for (let i = 0; i < groceryList.length; i++) {
-        entirePage.append(groceryList[i]+'<br>');
-    }
+    let keyset = groceryList.keys();
+    console.log(groceryList);
+    console.log(keyset);
 
-    entirePage.append("<br>Your total cost will come out to about " + totalCost);
+    for (let key of keyset) {
+        if (groceryList.get(key) > 1) {
+            entirePage.append(key + ' ('+groceryList.get(key) + ')<br>');
+        } else {
+            entirePage.append(key+'<br>');
+
+        }
+    }
+/*
+    groceryList.forEach(function(item) {
+        entirePage.append(item);
+
+    }) */
+
+    $('.signle_service_left').empty();
+    $('.signle_service_left').append('<img src="assets/images/workhome3.jpg" alt="" />')
+
+    entirePage.append("<br><b>Your total cost will come out to about " + totalCost+"</b>");
+    entirePage.append('<br><button type="button">Edit Order</button>')
+    entirePage.append('<button type="button">Order Now!</button>')
+
 
 }
