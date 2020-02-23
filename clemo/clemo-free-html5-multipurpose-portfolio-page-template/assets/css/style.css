@@ -58,6 +58,14 @@ a:focus {
     text-decoration: none;
     outline: none;
 }
+
+#amazon {
+    align: center;
+    text-align: center;
+}
+#fresh {
+    width: 20%;
+}
 a,
 button,
 a span {
@@ -72,6 +80,7 @@ a span {
 .btn:active {
     outline: inherit;
 }
+
 *,
 *:before,
 *:after {
