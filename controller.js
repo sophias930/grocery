@@ -87,7 +87,7 @@ function questionsDone() {
     console.log("You've answered all questions");
     let entirePage = $('#entirepage');
     entirePage.empty();
-    entirePage.append('<h2>Here are recommended grocery plans catered to you!</h2>');
+    entirePage.append('<h2>Here is a recommended grocery plan catered to you!</h2>');
 
     if (size == "small") {
         fruits = 4;
@@ -107,6 +107,16 @@ function questionsDone() {
         meat = 12;
         grains = 15;
         totalCost = "$100"
+    }
+
+    if (aversions.contains("Vegetarian/Vegan")) {
+        meatArray = vegetablesArray;
+    }
+    if (aversions.contains("Pescatarian")) {
+        meatArray = fishArray;
+    }
+    if (aversions.contains("Fruit")) {
+        fruitsArray = vegetablesArray;
     }
 
     for (let i = fruits; i > 0; i--) {
